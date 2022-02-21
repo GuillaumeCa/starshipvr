@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://models/concrete.material" type="Material" id=1]
+[ext_resource path="res://models/tower_exterior2.gltf" type="PackedScene" id=2]
+[ext_resource path="res://models/metal.material" type="Material" id=4]
+
+[node name="TowerMesh" instance=ExtResource( 2 )]
+
+[node name="tower_base" parent="." index="0"]
+use_in_baked_light = true
+material/0 = ExtResource( 1 )
+
+[node name="lightning_pole" parent="." index="1"]
+use_in_baked_light = true
+material/0 = ExtResource( 4 )
+
+[node name="floors" parent="." index="2"]
+use_in_baked_light = true

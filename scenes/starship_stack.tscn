@@ -1,0 +1,107 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://models/booster.gltf" type="PackedScene" id=1]
+[ext_resource path="res://models/starship_exterior.gltf" type="PackedScene" id=2]
+[ext_resource path="res://scenes/raptor_plume.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sound/starship_sound.ogg" type="AudioStream" id=5]
+
+[node name="starship_stack" type="Spatial"]
+
+[node name="starship_exterior" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 70.7257, 0 )
+
+[node name="booster" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="raptor_plume" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
+
+[node name="raptor_plume2" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0.666391, 0, 1.63808 )
+
+[node name="raptor_plume3" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 1.6426, 0, 0.673168 )
+
+[node name="raptor_plume4" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 1.64961, 0, -0.689417 )
+
+[node name="raptor_plume5" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0.687003, 0, -1.66574 )
+
+[node name="raptor_plume6" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -0.701, 0, -1.63798 )
+
+[node name="raptor_plume7" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -1.69351, 0, -0.714882 )
+
+[node name="raptor_plume8" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -1.68372, 0, 0.68172 )
+
+[node name="raptor_plume9" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -0.712654, 0, 1.64724 )
+
+[node name="raptor_plume10" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -4.02237, 0, 1.29909 )
+
+[node name="raptor_plume11" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -3.39243, 0, 2.50859 )
+
+[node name="raptor_plume12" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -2.46011, 0, 3.40731 )
+
+[node name="raptor_plume13" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -1.35746, 0, 4.01435 )
+
+[node name="raptor_plume14" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -0.0712562, 0, 4.24594 )
+
+[node name="raptor_plume15" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 1.25465, 0, 4.03249 )
+
+[node name="raptor_plume16" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 2.42091, 0, 3.42534 )
+
+[node name="raptor_plume17" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 3.38078, 0, 2.5255 )
+
+[node name="raptor_plume18" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 3.96531, 0, 1.39149 )
+
+[node name="raptor_plume19" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 4.23409, 0, 0.106401 )
+
+[node name="raptor_plume20" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 4.0493, 0, -1.16189 )
+
+[node name="raptor_plume21" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 2.57104, 0, -3.35409 )
+
+[node name="raptor_plume23" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 1.32795, 0, -3.93364 )
+
+[node name="raptor_plume24" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0.0260655, 0, -4.19401 )
+
+[node name="raptor_plume25" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -1.29138, 0, -4.00699 )
+
+[node name="raptor_plume26" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -2.46722, 0, -3.38791 )
+
+[node name="raptor_plume27" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -3.37317, 0, -2.48802 )
+
+[node name="raptor_plume28" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -4.00317, 0, -1.32411 )
+
+[node name="raptor_plume29" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -4.2337, 0, -0.00906479 )
+
+[node name="raptor_plume22" parent="booster" instance=ExtResource( 4 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 3.46136, 0, -2.40497 )
+
+[node name="EngineSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.814951, 0 )
+stream = ExtResource( 5 )
+
+[editable path="booster"]

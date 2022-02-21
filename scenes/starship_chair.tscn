@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://models/starship-chair.gltf" type="PackedScene" id=1]
+[ext_resource path="res://scenes/starship_chair.gd" type="Script" id=2]
+[ext_resource path="res://models/starship_chair.material" type="Material" id=3]
+[ext_resource path="res://OQ_Toolkit/OQ_UI2D/OQ_UI2DCanvas.tscn" type="PackedScene" id=4]
+
+[sub_resource type="ViewportTexture" id=1]
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.547822, 1.05176, 0.475815 )
+
+[node name="starship-chair" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="chair001" parent="." index="0"]
+transform = Transform( -4.37114e-08, -1.1652e-08, -1, -2.8026e-45, 1, -1.1652e-08, 1, -5.09325e-16, -4.37114e-08, 0, 0.222, 0 )
+material/0 = ExtResource( 3 )
+
+[node name="UI" parent="chair001" index="0" instance=ExtResource( 4 )]
+transform = Transform( -3.6805e-08, 0.284586, 0.934248, -9.81098e-09, 0.74553, -0.356624, -0.842, -2.11266e-08, -3.66819e-08, -0.317505, 1.24322, -0.00922461 )
+visible = false
+
+[node name="Control" type="Control" parent="chair001/UI" index="2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -153.6
+margin_top = -102.4
+margin_right = 153.6
+margin_bottom = 102.4
+rect_min_size = Vector2( 307.2, 204.8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="chair001/UI/Control" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 1 )
+expand = true
+flip_v = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="chair001/UI/Control" index="1"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Loading..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnterArea" type="Area" parent="." index="1"]
+
+[node name="CollisionShape" type="CollisionShape" parent="EnterArea" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04576, -0.285877 )
+shape = SubResource( 2 )
+
+[connection signal="area_entered" from="EnterArea" to="." method="_on_EnterArea_area_entered"]
+[connection signal="area_exited" from="EnterArea" to="." method="_on_EnterArea_area_exited"]

@@ -1,0 +1,128 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://OQ_Toolkit/OQ_UI2D/OQ_UI2DCanvas.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/UI.gd" type="Script" id=2]
+[ext_resource path="res://fonts/nasa_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://fonts/nasalization-rg.otf" type="DynamicFontData" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.258824, 0.258824, 0.258824, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="DynamicFont" id=2]
+size = 22
+font_data = ExtResource( 4 )
+
+[node name="UI" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Menu" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 0.966223, 0.257706, 0, -0.257706, 0.966223, 0, 0.654904, 0 )
+transparent = true
+
+[node name="Control" type="Control" parent="Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 1024, 600 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Menu/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 1024, 600 )
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Menu/Control/Panel"]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 1000.0
+margin_bottom = 63.0
+custom_fonts/font = ExtResource( 3 )
+text = "STARBASE CONTROL CENTER"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Control/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -130.0
+margin_top = -49.0
+margin_right = 130.0
+margin_bottom = 49.0
+custom_constants/separation = 11
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnterStarship" type="Button" parent="Menu/Control/Panel/VBoxContainer"]
+margin_right = 260.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 2 )
+text = "Enter Starship"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnterSeat" type="Button" parent="Menu/Control/Panel/VBoxContainer"]
+margin_top = 44.0
+margin_right = 260.0
+margin_bottom = 77.0
+custom_fonts/font = SubResource( 2 )
+text = "Enter Seat"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TowerBase" type="Button" parent="Menu/Control/Panel/VBoxContainer"]
+margin_top = 88.0
+margin_right = 260.0
+margin_bottom = 121.0
+custom_fonts/font = SubResource( 2 )
+text = "Tower base"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Launch" type="Button" parent="Menu/Control/Panel/VBoxContainer"]
+margin_top = 132.0
+margin_right = 260.0
+margin_bottom = 165.0
+custom_fonts/font = SubResource( 2 )
+text = "Launch"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reset" type="Button" parent="Menu/Control/Panel/VBoxContainer"]
+margin_top = 176.0
+margin_right = 260.0
+margin_bottom = 209.0
+custom_fonts/font = SubResource( 2 )
+text = "Reset Launch"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Menu/Control/Panel/VBoxContainer/EnterStarship" to="." method="_on_EnterStarship_pressed"]
+[connection signal="pressed" from="Menu/Control/Panel/VBoxContainer/EnterSeat" to="." method="_on_EnterSeat_pressed"]
+[connection signal="pressed" from="Menu/Control/Panel/VBoxContainer/TowerBase" to="." method="_on_TowerBase_pressed"]
+[connection signal="pressed" from="Menu/Control/Panel/VBoxContainer/Launch" to="." method="_on_Launch_pressed"]
+[connection signal="pressed" from="Menu/Control/Panel/VBoxContainer/Reset" to="." method="_on_Reset_pressed"]
