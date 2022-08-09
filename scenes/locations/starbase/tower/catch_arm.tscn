@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://models/catch_arm.gltf" type="PackedScene" id=1]
+[ext_resource path="res://models/shiny_black_metal.material" type="Material" id=2]
+[ext_resource path="res://scenes/locations/starbase/tower/catch_arm.gd" type="Script" id=3]
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 1, 1, 12.9152 )
+
+[sub_resource type="CylinderMesh" id=1]
+top_radius = 4.175
+bottom_radius = 4.175
+height = 19.46
+radial_segments = 8
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 2, 2, 12.956 )
+
+[node name="catch_arm" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="arms_support" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0 )
+material/0 = ExtResource( 2 )
+
+[node name="arm_mesh_left" parent="arms_support" index="0"]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 1.07114, -9.28868, -1.0962 )
+material/0 = ExtResource( 2 )
+
+[node name="ArmArea" type="Area" parent="arms_support/arm_mesh_left" index="0"]
+transform = Transform( 1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, -4.72214, 12.4251, -20.6409 )
+
+[node name="CollisionShape" type="CollisionShape" parent="arms_support/arm_mesh_left/ArmArea" index="0"]
+transform = Transform( 1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="arm_mesh_right" parent="arms_support" index="1"]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 1.10468, -9.28824, -1.11281 )
+material/0 = ExtResource( 2 )
+
+[node name="ArmArea" type="Area" parent="arms_support/arm_mesh_right" index="0"]
+transform = Transform( 1, 0, 3.27826e-07, 0, 1, 0, -3.27826e-07, 0, 1, 4.68896, 12.4251, -20.6409 )
+
+[node name="CollisionShape" type="CollisionShape" parent="arms_support/arm_mesh_right/ArmArea" index="0"]
+transform = Transform( 1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="pivot" type="Spatial" parent="arms_support" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.071, 3.9, -1.096 )
+
+[node name="catch_position" type="Position3D" parent="arms_support/pivot" index="0"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 10.3, 0, -10.3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="arms_support/pivot/catch_position" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.67813, 0 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="MeshInstance" type="MeshInstance" parent="arms_support/pivot/catch_position/MeshInstance" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.49678, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Position3D" type="Position3D" parent="arms_support/pivot" index="1"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 3.50963, 0 )
+
+[connection signal="area_entered" from="arms_support/arm_mesh_left/ArmArea" to="." method="_on_ArmArea_area_entered"]
+[connection signal="area_exited" from="arms_support/arm_mesh_left/ArmArea" to="." method="_on_ArmArea_area_exited"]
+[connection signal="area_entered" from="arms_support/arm_mesh_right/ArmArea" to="." method="_on_ArmArea_area_entered"]
+[connection signal="area_exited" from="arms_support/arm_mesh_right/ArmArea" to="." method="_on_ArmArea_area_exited"]

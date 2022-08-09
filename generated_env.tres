@@ -9,9 +9,10 @@ ground_horizon_color = Color( 0.721569, 0.901961, 1, 1 )
 [resource]
 background_mode = 2
 background_sky = SubResource( 1 )
-ambient_light_color = Color( 1, 1, 1, 1 )
-ambient_light_energy = 0.16
-ambient_light_sky_contribution = 0.2
+ambient_light_color = Color( 0.803922, 0.803922, 0.803922, 1 )
+ambient_light_sky_contribution = 0.3
 fog_color = Color( 0.721569, 0.901961, 1, 1 )
 fog_depth_begin = 229.0
 fog_depth_end = 654.8
+dof_blur_far_transition = 53.06
+dof_blur_far_amount = 0.5

@@ -1,0 +1,1259 @@
+[gd_scene load_steps=56 format=2]
+
+[ext_resource path="res://OQ_Toolkit/OQ_LeftController.tscn" type="PackedScene" id=1]
+[ext_resource path="res://baking/main.lmbake" type="BakedLightmapData" id=2]
+[ext_resource path="res://scenes/player/hand.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/locations/starbase/tower/qd-arm.tscn" type="PackedScene" id=4]
+[ext_resource path="res://OQ_Toolkit/OQ_ARVROrigin/Feature_VRSimulator.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/locations/starbase/starbase.gd" type="Script" id=6]
+[ext_resource path="res://scenes/starship/starship.tscn" type="PackedScene" id=7]
+[ext_resource path="res://models/orbital_stand.gltf" type="PackedScene" id=8]
+[ext_resource path="res://OQ_Toolkit/OQ_RightController.tscn" type="PackedScene" id=9]
+[ext_resource path="res://OQ_Toolkit/OQ_ARVROrigin.tscn" type="PackedScene" id=10]
+[ext_resource path="res://OQ_Toolkit/OQ_ARVRController/Feature_UIRayCast.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/locations/starbase/tower/Tower.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/starship/booster.tscn" type="PackedScene" id=13]
+[ext_resource path="res://generated_env.tres" type="Environment" id=14]
+[ext_resource path="res://OQ_Toolkit/OQ_ARVROrigin/Feature_Climbing.tscn" type="PackedScene" id=15]
+[ext_resource path="res://models/metal_gray_blue.material" type="Material" id=16]
+[ext_resource path="res://scenes/locations/starbase/tower/catch_arm.tscn" type="PackedScene" id=17]
+[ext_resource path="res://OQ_Toolkit/OQ_ARVROrigin/Locomotion_Teleport.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scenes/locations/starbase/tank_farm.tscn" type="PackedScene" id=19]
+[ext_resource path="res://OQ_Toolkit/OQ_ARVROrigin/Feature_Falling.tscn" type="PackedScene" id=20]
+[ext_resource path="res://OQ_Toolkit/OQ_ARVRCamera.tscn" type="PackedScene" id=21]
+[ext_resource path="res://sound/wind.ogg" type="AudioStream" id=22]
+[ext_resource path="res://materials/exhaust_particle.material" type="Material" id=23]
+[ext_resource path="res://textures/smoke_02.png" type="Texture" id=24]
+[ext_resource path="res://OQ_Toolkit/OQ_ARVROrigin/Locomotion_Stick.tscn" type="PackedScene" id=25]
+[ext_resource path="res://OQ_Toolkit/OQ_ARVRController/Feature_StaticGrab.tscn" type="PackedScene" id=26]
+[ext_resource path="res://scenes/ui/UI.tscn" type="PackedScene" id=27]
+[ext_resource path="res://shaders/clouds.shader" type="Shader" id=28]
+[ext_resource path="res://materials/earth.material" type="Material" id=29]
+[ext_resource path="res://scenes/locations/earth.gd" type="Script" id=30]
+[ext_resource path="res://scenes/utils/HandArea.gd" type="Script" id=31]
+[ext_resource path="res://scenes/locations/starbase/tower/orbital_stand.tscn" type="PackedScene" id=32]
+
+[sub_resource type="QuadMesh" id=19]
+material = ExtResource( 23 )
+size = Vector2( 5, 5 )
+
+[sub_resource type="Curve" id=16]
+_data = [ Vector2( 0, 0.45045 ), 0.0, 0.0, 0, 0, Vector2( 0.765199, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=14]
+offsets = PoolRealArray( 0.00932401, 0.172494, 0.724942, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="Animation" id=24]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("../Tower/catch_arm/arms_support/arm_mesh_left:rotation_degrees:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("../Tower/catch_arm/arms_support/arm_mesh_left:rotation_degrees:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -45.771, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("../Tower/catch_arm/arms_support/arm_mesh_left:rotation_degrees:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("../Tower/catch_arm/arms_support/arm_mesh_right:rotation_degrees:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("../Tower/catch_arm/arms_support/arm_mesh_right:rotation_degrees:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( -45.988, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("../Tower/catch_arm/arms_support/arm_mesh_right:rotation_degrees:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("../orbital_stand2/starship:translation:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("../orbital_stand2/starship:translation:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 88.833, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("../orbital_stand2/starship:translation:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("../orbital_stand2/starship:rotation_degrees:x")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("../orbital_stand2/starship:rotation_degrees:y")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( -90, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/11/type = "bezier"
+tracks/11/path = NodePath("../orbital_stand2/starship:rotation_degrees:z")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/12/type = "bezier"
+tracks/12/path = NodePath("../orbital_stand2/booster:rotation_degrees:x")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/13/type = "bezier"
+tracks/13/path = NodePath("../orbital_stand2/booster:rotation_degrees:y")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"points": PoolRealArray( -90, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/14/type = "bezier"
+tracks/14/path = NodePath("../orbital_stand2/booster:rotation_degrees:z")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/15/type = "bezier"
+tracks/15/path = NodePath("../orbital_stand2/booster:translation:x")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/16/type = "bezier"
+tracks/16/path = NodePath("../orbital_stand2/booster:translation:y")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"points": PoolRealArray( 18.099, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/17/type = "bezier"
+tracks/17/path = NodePath("../orbital_stand2/booster:translation:z")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "launch"
+length = 60.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("../orbital_stand2/booster:translation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 25.014, -0.25, 0, 0.25, 0, 25.014, -0.25, 0, 0.25, 0, 12.692, 0, 0, 0, 0, 12.692, -0.25, 0, 0.942459, 0.0499716, 19.4376, -0.25, 0, 0.25, 0, 25.0749, -0.25, 0, 0.25, 0, 25.0135, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 10, 22.1, 25, 35, 36, 37, 39 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("../orbital_stand2/booster:translation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 18.099, -0.25, 0, 0.25, 0, 18.099, -0.25, 0, 1.3, 0, 1034.77, -0.38446, -5.26306, 0.515541, 80.64, 55.703, -5.695, 12.264, 0, 0, 55.703, -0.25, 0, 0.25, 0, 55.703, -0.25, 0, 0.25, 0, 17.2565, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 10, 25, 35, 36, 37, 39 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("../orbital_stand2/booster:translation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -18.602, 0, 0, 0, 0, -18.6017, -0.25, 0, 0.707951, 0.347851, -12.2759, -0.192049, -2.07161, 0.307949, 4.38889, 0.075613, -0.292049, 0.0378885, 0.25, 0 ),
+"times": PoolRealArray( 0, 10, 22.1, 25, 35, 36, 37 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("../orbital_stand2/starship:translation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 25.014, -0.25, 0, 0.25, 0, 25.014, -0.25, 0, 0.25, 0, 25.014, -0.25, 0, 0.25, 0, -56.1397, -0.938459, 5.40879, 0.761541, -2.65031, -65.8174, -1.23846, 0.0501175, 0.25, 0, -65.7673, -0.25, -0.12369, 1.14769, 0.567833, -2.40079, -0.24836, -14.5355, 0.351643, 16.7966, 15, -0.151558, 0.374397, 0.176182, 0.374414, 15, -1.36354, 0.0258436, 0.25, 0, 14.9914, -0.25, 0, 0.25, 0, 25.014, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 10, 25, 29, 35.2, 38, 40.4, 42.9, 44, 47, 49.4, 50.9 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("../orbital_stand2/starship:translation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 88.833, -0.25, 0, 0.25, 0, 88.833, -0.25, 0, 1.3, 0, 1086.28, -0.25, 0, 0.25, 0, 2277.67, -0.364022, -12.6851, 1.64127, 57.1934, 1171.23, -0.05643, 9.27176, 0.277649, -45.6193, 341.643, -4.53654, 421.958, 0.414349, -33.1097, 194.438, -0.232849, 15.5633, 0.36478, -24.2897, 90.3977, -0.635223, 10.0918, 0.16478, 0.044899, 90.3977, -0.25, 0, 0.25, 0, 87.9905, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 10, 25, 29, 34.8, 42.3, 45.1, 47, 49.4, 50.9 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("../orbital_stand2/starship:translation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -0.0420966, -0.25, 0, 1.90936, -0.778866, -11.1221, -0.961575, 2.56994, 0.453375, -1.21171, -14.799, -1.01921, 0.0522334, 0.782234, -0.0400887, -14.7989, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 10, 25, 29, 37, 38.1, 39.1, 43.5, 46.9, 49.4, 50.9 )
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("../orbital_stand2/booster")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 9.7, 25, 29, 35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_engine"
+}, {
+"args": [  ],
+"method": "stop_engine"
+}, {
+"args": [  ],
+"method": "start_center"
+}, {
+"args": [  ],
+"method": "stop_engine"
+} ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("..")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 54.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "retract_arm"
+}, {
+"args": [  ],
+"method": "deploy_arm"
+} ]
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("../Tower/catch_arm:translation:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 6.18416, -0.25, 0, 0.25, 0, 6.18416, -0.25, 0, 0.25, 0, 6.18416, -0.25, 0, 0.25, 0, 6.18416, -0.25, 0, 0.25, 0, 6.18416, -0.25, 0, 0.25, 0, 6.18416, -0.25, 0, 0.25, 0, 6.18416, -0.25, 0, 0.25, 0, 6.18416, -0.25, 0, 0.25, 0, 6.18416, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 22.7, 27.6, 37, 39, 39.5, 40.5, 50.9, 53.2, 55 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("../Tower/catch_arm:translation:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 18.2938, -0.25, 0, 0.25, 0, 110.516, -0.25, 0, 0.25, 0, 110.516, -0.25, 0, 0.25, 0, 110.516, -0.25, 0, 0.25, 0, 72, -0.25, 0, 0.25, 0, 72, -0.25, 0, 0.25, 0, 115.3, -0.25, 0, 0.25, 0, 115.3, -0.25, 0, 0.25, 0, 114.617, -0.25, 0, 0.25, 0, 114.617, -0.25, 0, 0.25, 0, 19.7176, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 22.7, 27.6, 35, 37, 39, 39.5, 40.5, 49.4, 50.9, 53.2, 55 )
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("../Tower/catch_arm:translation:z")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( -6.23181, -0.25, 0, 0.25, 0, -6.23181, -0.25, 0, 0.25, 0, -6.23181, -0.25, 0, 0.25, 0, -6.23181, -0.25, 0, 0.25, 0, -6.23181, -0.25, 0, 0.25, 0, -6.23181, -0.25, 0, 0.25, 0, -6.23181, -0.25, 0, 0.25, 0, -6.23181, -0.25, 0, 0.25, 0, -6.23181, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 22.7, 27.6, 37, 39, 39.5, 40.5, 50.9, 53.2, 55 )
+}
+tracks/11/type = "bezier"
+tracks/11/path = NodePath("../Tower/catch_arm/arms_support/arm_mesh_left:rotation_degrees:x")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 22.7, 27.6, 35.4, 37, 39, 39.5, 40.5, 41.3, 53.2 )
+}
+tracks/12/type = "bezier"
+tracks/12/path = NodePath("../Tower/catch_arm/arms_support/arm_mesh_left:rotation_degrees:y")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"points": PoolRealArray( -25, -0.25, 0, 0.25, 0, -25, -0.25, 0, 0.25, 0, 40, -0.25, 0, 0.25, 0, 39, -0.25, 0, 0.25, 0, -44, -0.25, 0, 0.25, 0, -44, -0.25, 0, 0.25, 0, -25, -0.25, 0, 0.25, 0, -25, -0.25, 0, 0.25, 0, 33, -0.25, 0, 0.25, 0, 33, -0.25, 0, 0.25, 0, 42, -0.25, 0, 0.25, 0, 42, -0.25, 0, 0.25, 0, 33, -0.25, 0, 0.25, 0, 33, -0.25, 0, 0.25, 0, -42, -0.25, 0, 0.25, 0, -42, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 22.7, 27.6, 35.4, 37, 39, 39.5, 40.5, 41.3, 45.1, 45.4, 46.4, 47, 49.4, 50.9, 51.7, 53.2 )
+}
+tracks/13/type = "bezier"
+tracks/13/path = NodePath("../Tower/catch_arm/arms_support/arm_mesh_left:rotation_degrees:z")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 22.7, 27.6, 35.4, 37, 39, 39.5, 40.5, 41.3, 53.2 )
+}
+tracks/14/type = "bezier"
+tracks/14/path = NodePath("../Tower/catch_arm/arms_support/arm_mesh_right:rotation_degrees:x")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 22.7, 27.6, 35.4, 37, 39, 39.5, 40.5, 41.3, 53.2 )
+}
+tracks/15/type = "bezier"
+tracks/15/path = NodePath("../Tower/catch_arm/arms_support/arm_mesh_right:rotation_degrees:y")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"points": PoolRealArray( -60, -0.25, 0, 0.25, 0, -60, -0.25, 0, 0.25, 0, 37, -0.25, 0, 0.25, 0, 37, -0.25, 0, 0.25, 0, -47, -0.25, 0, 0.25, 0, -47, -0.25, 0, 0.25, 0, -68, -0.25, 0, 0.25, 0, -68, -0.25, 0, 0.25, 0, 25, -0.25, 0, 0.25, 0, 25, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0, 25, -0.25, 0, 0.25, 0, 25, -0.25, 0, 0.25, 0, -48, -0.25, 0, 0.25, 0, -48, -0.25, 0, 0.25, 0, -67, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 22.7, 27.6, 35.4, 37, 39, 39.5, 40.5, 41.3, 45.1, 45.4, 46.4, 47, 49.4, 50.9, 51.7, 53.2 )
+}
+tracks/16/type = "bezier"
+tracks/16/path = NodePath("../Tower/catch_arm/arms_support/arm_mesh_right:rotation_degrees:z")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 22.7, 27.6, 35.4, 37, 39, 39.5, 40.5, 41.3, 53.2 )
+}
+tracks/17/type = "bezier"
+tracks/17/path = NodePath("../orbital_stand2/booster:rotation_degrees:x")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 10, 25, 35, 36, 37 )
+}
+tracks/18/type = "bezier"
+tracks/18/path = NodePath("../orbital_stand2/booster:rotation_degrees:y")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"points": PoolRealArray( -90, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 83.0776, -0.25, 0, 0.125006, 0.0704193, 59.0422, -0.25, 0, 0.25, 0, 1.3876, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 10, 25, 35, 36, 37 )
+}
+tracks/19/type = "bezier"
+tracks/19/path = NodePath("../orbital_stand2/booster:rotation_degrees:z")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 10, 25, 35, 36, 37 )
+}
+tracks/20/type = "method"
+tracks/20/path = NodePath("../orbital_stand2/starship")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 40.4, 47 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_engine"
+}, {
+"args": [  ],
+"method": "stop_engine"
+} ]
+}
+tracks/21/type = "method"
+tracks/21/path = NodePath("..")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 9.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_venting"
+}, {
+"args": [  ],
+"method": "stop_venting"
+} ]
+}
+tracks/22/type = "method"
+tracks/22/path = NodePath("..")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 9.7, 10.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "launch_exhaust"
+}, {
+"args": [  ],
+"method": "stop_exhaust"
+} ]
+}
+tracks/23/type = "bezier"
+tracks/23/path = NodePath("../orbital_stand2/starship:rotation_degrees:x")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 35.6, 36.5, 41, 44, 47, 49.4, 50.9 )
+}
+tracks/24/type = "bezier"
+tracks/24/path = NodePath("../orbital_stand2/starship:rotation_degrees:y")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"points": PoolRealArray( -90, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, -0.0231395, 1.34092, 0.124113, 75, -0.25, 0, 0.25, 0, 75, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 35.6, 36.5, 41.3, 47, 49.4, 50.9 )
+}
+tracks/25/type = "bezier"
+tracks/25/path = NodePath("../orbital_stand2/starship:rotation_degrees:z")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -0.21759, -0.25, 0, 0, -94.9506, -90, -4.93349, 4.43182, 1.42769, 2.31897, -56.0906, -1.5502, -16.9714, 1.32769, 14.5355, 1.37732, -3.25072, 4.99561, 0.649277, -0.997789, 0.793352, -0.25, 0, 0.25, 0, 0.259, -0.25, 0, 0.25, 0, 0.259, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 28.9, 36.5, 40.9, 46.3, 47, 49.4, 50.9 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "reset"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("../orbital_stand2/starship:translation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 25.014, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("../orbital_stand2/starship:translation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 86.2825, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("../orbital_stand2/starship:translation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("../orbital_stand2/booster:translation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 25.0135, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("../orbital_stand2/booster:translation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 15.5485, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("../orbital_stand2/booster:translation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("../orbital_stand2/booster:rotation_degrees:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("../orbital_stand2/booster:rotation_degrees:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("../orbital_stand2/booster:rotation_degrees:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath("../orbital_stand2/booster")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop_engine"
+} ]
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("../Tower/catch_arm:translation:x")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( 6.18416, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/11/type = "bezier"
+tracks/11/path = NodePath("../Tower/catch_arm:translation:y")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"points": PoolRealArray( 18.2938, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/12/type = "bezier"
+tracks/12/path = NodePath("../Tower/catch_arm:translation:z")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"points": PoolRealArray( -6.23181, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/13/type = "bezier"
+tracks/13/path = NodePath("../Tower/catch_arm/arms_support/arm_mesh_left:rotation_degrees:x")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/14/type = "bezier"
+tracks/14/path = NodePath("../Tower/catch_arm/arms_support/arm_mesh_left:rotation_degrees:y")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"points": PoolRealArray( -43.181, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/15/type = "bezier"
+tracks/15/path = NodePath("../Tower/catch_arm/arms_support/arm_mesh_left:rotation_degrees:z")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/16/type = "bezier"
+tracks/16/path = NodePath("../Tower/catch_arm/arms_support/arm_mesh_right:rotation_degrees:x")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/17/type = "bezier"
+tracks/17/path = NodePath("../Tower/catch_arm/arms_support/arm_mesh_right:rotation_degrees:y")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"points": PoolRealArray( -45.988, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/18/type = "bezier"
+tracks/18/path = NodePath("../Tower/catch_arm/arms_support/arm_mesh_right:rotation_degrees:z")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/19/type = "method"
+tracks/19/path = NodePath("..")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "deploy_arm"
+} ]
+}
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 0.0138154, 0.015922, 0.0469204 )
+
+[sub_resource type="BoxShape" id=23]
+extents = Vector3( 0.014, -0.01, 0.047 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 0.3, 0.4, 0.3 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 50, 0.411, 50 )
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("arm/arm_extender:rotation_degrees:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("arm/arm_extender:rotation_degrees:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1.554, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("arm/arm_extender:rotation_degrees:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=8]
+length = 10.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("arm/arm_extender/grab_arm_left:rotation_degrees:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 6, 10 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("arm/arm_extender/grab_arm_left:rotation_degrees:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 60, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 6, 10 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("arm/arm_extender/grab_arm_left:rotation_degrees:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 6, 10 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("arm/arm_extender/grab_arm_right:rotation_degrees:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 6, 10 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("arm/arm_extender/grab_arm_right:rotation_degrees:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( -60, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 6, 10 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("arm/arm_extender/grab_arm_right:rotation_degrees:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 6, 10 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("arm:rotation_degrees:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( -0.003, -0.25, 0, 0.25, 0, -0.003, -0.25, 0, 0.25, 0, -0.00287087, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2, 7 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("arm:rotation_degrees:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 13.18, -0.25, 0, 0.25, 0, 44.426, -0.25, 0, 0.25, 0, 89.5723, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2, 7 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("arm:rotation_degrees:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 0.02, -0.25, 0, 0.25, 0, 0.02, -0.25, 0, 0.25, 0, 0.0196219, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2, 7 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("arm/arm_extender:rotation_degrees:x")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 2, 7, 10 )
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("arm/arm_extender:rotation_degrees:y")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( 69.054, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1.554, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 2, 7, 10 )
+}
+tracks/11/type = "bezier"
+tracks/11/path = NodePath("arm/arm_extender:rotation_degrees:z")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 2, 7, 10 )
+}
+
+[sub_resource type="SpatialMaterial" id=20]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 24 )
+
+[sub_resource type="QuadMesh" id=13]
+material = SubResource( 20 )
+size = Vector2( 5, 5 )
+
+[sub_resource type="Gradient" id=18]
+offsets = PoolRealArray( 0.00932401, 0.172494, 0.724942, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.554068, 0.554068, 0.554068, 1, 0.694693, 0.694693, 0.694693, 1, 0, 0, 0, 1 )
+
+[sub_resource type="PlaneMesh" id=21]
+size = Vector2( 4000, 4000 )
+subdivide_width = 10
+subdivide_depth = 10
+
+[sub_resource type="SpatialMaterial" id=22]
+albedo_color = Color( 0.470588, 0.462745, 0.423529, 1 )
+
+[sub_resource type="QuadMesh" id=25]
+size = Vector2( 4000, 4000 )
+
+[sub_resource type="OpenSimplexNoise" id=28]
+seed = 3
+octaves = 5
+period = 24.8
+persistence = 0.451
+lacunarity = 2.12
+
+[sub_resource type="NoiseTexture" id=29]
+seamless = true
+noise = SubResource( 28 )
+
+[sub_resource type="ShaderMaterial" id=27]
+shader = ExtResource( 28 )
+shader_param/scale = 2.63
+shader_param/cloudcover = 1.006
+shader_param/cloudspeed = 1.0
+shader_param/cloudcolor = Color( 1, 1, 1, 1 )
+shader_param/noise = SubResource( 29 )
+
+[sub_resource type="SphereMesh" id=30]
+radius = 1000.0
+height = 2000.0
+
+[sub_resource type="Curve3D" id=31]
+bake_interval = 0.5
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 23.4001, 21.9559, 0, -9.87445, -79.1485, 0, 9.87445, 79.1485, 0, 28.4077, 174.096, 0, -314.582, -344.845, 0, 314.582, 344.845, 0, 386.823, 883.405, 0, -304.196, -279.124, 0, 304.196, 279.124, 0, 1449.66, 1903.21, 0, -1081.3, -364.408, 0, 1081.3, 364.408, 0, 3385.13, 3132.94, 0 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0 )
+}
+
+[node name="starbase" type="Spatial"]
+script = ExtResource( 6 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 14 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
+transform = Transform( 0.982576, -0.185654, 0.00873488, -0.103057, -0.505115, 0.856877, -0.154671, -0.842847, -0.515447, -12.0072, 42.4893, -39.9504 )
+light_energy = 0.72
+light_bake_mode = 2
+shadow_color = Color( 0.603922, 0.603922, 0.603922, 1 )
+shadow_bias = 0.0
+directional_shadow_split_1 = 0.04
+directional_shadow_split_2 = 0.16
+directional_shadow_depth_range = 1
+directional_shadow_max_distance = 300.0
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="WorldEnvironment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9731, 124.83, 0 )
+extents = Vector3( 12.7058, 18.3434, 13.846 )
+
+[node name="ReflectionProbe2" type="ReflectionProbe" parent="WorldEnvironment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9731, 84.4318, 0 )
+extents = Vector3( 12.6716, 18.3434, 13.846 )
+
+[node name="ReflectionProbe3" type="ReflectionProbe" parent="WorldEnvironment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9731, 52.0304, 0 )
+extents = Vector3( 12.7425, 18.3434, 13.846 )
+
+[node name="orbital_stand2" parent="." instance=ExtResource( 32 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 24.9993, 0, 0 )
+
+[node name="starship" parent="orbital_stand2" instance=ExtResource( 7 )]
+transform = Transform( -4.37113e-08, 0, -1, 0, 0.999999, 0, 0.999998, 0, -4.37114e-08, 0, 88.833, 0 )
+visible = false
+
+[node name="starship_entry" type="Position3D" parent="orbital_stand2/starship"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.49676, 27.7986, 0 )
+
+[node name="starship_seat" type="Position3D" parent="orbital_stand2/starship"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.577316, 39.3559, 1.95812 )
+
+[node name="booster" parent="orbital_stand2" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 18.099, 0 )
+
+[node name="rocket_exhaust" type="CPUParticles" parent="orbital_stand2"]
+transform = Transform( 0.664031, 0, -0.747705, 0, 1, 0, 0.747705, 0, 0.664031, -0.695391, 7.60353, -0.508795 )
+cast_shadow = 0
+emitting = false
+amount = 38
+lifetime = 10.0
+one_shot = true
+speed_scale = 3.69
+randomness = 0.23
+mesh = SubResource( 19 )
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+flatness = 1.0
+gravity = Vector3( 0, 0.2, 0 )
+initial_velocity = 4.03
+angular_velocity = 5.81
+angular_velocity_random = 0.41
+angle_random = 0.21
+scale_amount = 10.9
+scale_amount_random = 0.29
+scale_amount_curve = SubResource( 16 )
+color = Color( 0.807843, 0.635294, 0.45098, 1 )
+color_ramp = SubResource( 14 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="orbital_stand2"]
+root_node = NodePath("../../orbital_stand")
+reset_on_save = false
+playback_process_mode = 0
+anims/RESET = SubResource( 24 )
+anims/launch = SubResource( 1 )
+anims/reset = SubResource( 2 )
+
+[node name="orbital_stand" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[node name="orbital_stand" parent="orbital_stand" index="0"]
+transform = Transform( 1.14773, 0, 0, 0, 1.14773, 0, 0, 0, 1.14773, 25.0005, 17.99, 0 )
+material/0 = ExtResource( 16 )
+
+[node name="UI" parent="." instance=ExtResource( 27 )]
+transform = Transform( 0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 10.9894, 0.456637, 16.7182 )
+visible = false
+
+[node name="player" parent="." instance=ExtResource( 10 )]
+transform = Transform( 0.707107, 0, -0.707106, 0, 1, 0, 0.707107, 0, 0.707106, 5.67638, 0, 14.6264 )
+
+[node name="Feature_VRSimulator" parent="player" instance=ExtResource( 5 )]
+
+[node name="Locomotion_Teleport" parent="player" instance=ExtResource( 18 )]
+
+[node name="Feature_Falling" parent="player" instance=ExtResource( 20 )]
+active = false
+
+[node name="Feature_Climbing" parent="player" instance=ExtResource( 15 )]
+
+[node name="Locomotion_Stick" parent="player" instance=ExtResource( 25 )]
+move_speed = 4.0
+turn_type = 1
+
+[node name="OQ_ARVRCamera" parent="player" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, -1.19209e-07, 0, 1, 0, 0, 0, 1, 0, 1.8, 0 )
+far = 2000.0
+
+[node name="ui_position" type="Position3D" parent="player/OQ_ARVRCamera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.928631, -1.31527 )
+
+[node name="OQ_LeftController" parent="player" instance=ExtResource( 1 )]
+autoload_model = false
+
+[node name="Feature_StaticGrab" parent="player/OQ_LeftController" instance=ExtResource( 26 )]
+
+[node name="CollisionShape" parent="player/OQ_LeftController/Feature_StaticGrab/GrabArea" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0205784, -0.0439749, 0.0303688 )
+
+[node name="hand" parent="player/OQ_LeftController" instance=ExtResource( 3 )]
+transform = Transform( -4.28408e-08, 0, 1, 0, 1, 0, -1, 0, -4.28408e-08, -0.0225559, -0.0443802, 0.0396519 )
+left = true
+
+[node name="FingerArea" type="Area" parent="player/OQ_LeftController"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0473844, -0.0146179, -0.0317783 )
+script = ExtResource( 31 )
+
+[node name="CollisionShape" type="CollisionShape" parent="player/OQ_LeftController/FingerArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00683117, 0.00693762, 0.00907993 )
+shape = SubResource( 6 )
+
+[node name="OQ_RightController" parent="player" instance=ExtResource( 9 )]
+autoload_model = false
+
+[node name="Feature_StaticGrab" parent="player/OQ_RightController" instance=ExtResource( 26 )]
+
+[node name="CollisionShape" parent="player/OQ_RightController/Feature_StaticGrab/GrabArea" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0195866, -0.0394708, 0.030714 )
+
+[node name="Feature_UIRayCast" parent="player/OQ_RightController" instance=ExtResource( 11 )]
+ui_raycast_visible_button = 6
+ui_raycast_click_button = 1
+
+[node name="hand" parent="player/OQ_RightController" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.02, -0.044, 0.041 )
+
+[node name="FingerArea" type="Area" parent="player/OQ_RightController"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0366631, 0, -0.0306721 )
+script = ExtResource( 31 )
+
+[node name="CollisionShape" type="CollisionShape" parent="player/OQ_RightController/FingerArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00259781, 0, 0.0116673 )
+shape = SubResource( 23 )
+
+[node name="player_area" type="Area" parent="player"]
+
+[node name="CollisionShape" type="CollisionShape" parent="player/player_area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.278381, 0 )
+shape = SubResource( 7 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.416879, 0 )
+shape = SubResource( 3 )
+
+[node name="Tower" parent="." instance=ExtResource( 12 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0 )
+
+[node name="QDArm" parent="Tower" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.00995731, 85.553, 5.62581 )
+
+[node name="arm" parent="Tower/QDArm" index="0"]
+transform = Transform( 0.00746463, -5.26611e-05, 0.999972, 0.000342467, 1, 5.01061e-05, -0.999972, 0.000342083, 0.00746465, 0.896111, 4.38563, -0.256557 )
+
+[node name="arm_extender" parent="Tower/QDArm/arm" index="0"]
+transform = Transform( 0.999632, 0, 0.0271191, 0, 1, 0, -0.0271191, 0, 0.999632, 9.17165, 2.25332, -14.1291 )
+
+[node name="grab_arm_left" parent="Tower/QDArm/arm/arm_extender" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.53811, 0, -6.18079 )
+
+[node name="grab_arm_right" parent="Tower/QDArm/arm/arm_extender" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3974, 0, -4.25484 )
+
+[node name="QDAnimation" type="AnimationPlayer" parent="Tower/QDArm"]
+reset_on_save = false
+anims/RESET = SubResource( 11 )
+anims/attach = SubResource( 8 )
+
+[node name="catch_arm" parent="Tower" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.18416, 18.2938, -6.23181 )
+visible = false
+
+[node name="arm_mesh_left" parent="Tower/catch_arm/arms_support" index="0"]
+transform = Transform( 0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 1.07114, -9.28868, -1.0962 )
+
+[node name="arm_mesh_right" parent="Tower/catch_arm/arms_support" index="1"]
+transform = Transform( 0.499999, 0, -0.866024, 0, 1, 0, 0.866024, 0, 0.499999, 1.10468, -9.28824, -1.11281 )
+
+[node name="catch_position" parent="Tower/catch_arm/arms_support/pivot" index="0"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 10.712, 0, -10.712 )
+
+[node name="catch_arm2" parent="Tower" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2, 18.2754, -6.2 )
+arm_rotation = 73.162
+arm_open_angle = 7.3
+arm_height = 92.462
+catch_position = 5.368
+
+[node name="tank_farm" parent="." instance=ExtResource( 19 )]
+transform = Transform( 0.747705, 0, -0.664031, 0, 1, 0, 0.664031, 0, 0.747705, 103.034, 0, -47.1976 )
+
+[node name="gse_bunker" parent="tank_farm" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.03166, 0, 32.6715 )
+
+[node name="concrete_ground" parent="tank_farm" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -56.9992, 0, -7.238 )
+use_in_baked_light = false
+
+[node name="venting" type="CPUParticles" parent="tank_farm"]
+transform = Transform( 0.747705, 0, 0.664031, 0, 1, 0, -0.664031, 0, 0.747705, -7.33363, 0.531597, 38.8373 )
+visible = false
+amount = 30
+lifetime = 10.0
+speed_scale = 3.58
+randomness = 0.23
+mesh = SubResource( 13 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 4.03
+angular_velocity = 5.81
+angular_velocity_random = 0.41
+angle_random = 0.21
+scale_amount = 8.04
+color_ramp = SubResource( 18 )
+
+[node name="Ambiance" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 22 )
+volume_db = 8.0
+autoplay = true
+
+[node name="BakedLightmap" type="BakedLightmap" parent="."]
+transform = Transform( 0.747705, 0, -0.664031, 0, 1, 0, 0.664031, 0, 0.747705, -60.7371, 76.4713, -142.298 )
+extents = Vector3( 300, 90, 300 )
+quality = 0
+bounces = 1
+environment_mode = 1
+light_data = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.44225, 0 )
+visible = false
+mesh = SubResource( 21 )
+material/0 = SubResource( 22 )
+
+[node name="tower_base" type="Position3D" parent="."]
+transform = Transform( 0.830168, 0, -0.557513, 0, 1, 0, 0.557513, 0, 0.830168, 6.15244, 0, 16.8668 )
+
+[node name="cloud_mesh" type="MeshInstance" parent="."]
+transform = Transform( -1, 1.50996e-07, -6.60024e-15, 0, -4.37114e-08, -1, -1.50996e-07, -1, 4.37114e-08, 0, 500, 0 )
+mesh = SubResource( 25 )
+material/0 = SubResource( 27 )
+
+[node name="earth" type="MeshInstance" parent="."]
+transform = Transform( 21.7795, -55.9076, -9.35436e-07, 55.474, 21.6106, 7.45766, -6.94899, -2.70706, 59.5347, 0, -60000, 0 )
+visible = false
+mesh = SubResource( 30 )
+material/0 = ExtResource( 29 )
+script = ExtResource( 30 )
+
+[node name="booster_ascent" type="Path" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0905914, -0.289886, 0 )
+curve = SubResource( 31 )
+
+[node name="PathFollow" type="PathFollow" parent="booster_ascent"]
+transform = Transform( 0, 0.457387, 0.889263, 0, -0.889267, 0.457385, 0.999997, 0, 0, 2719.67, 2852.62, 0 )
+offset = 4515.77
+rotation_mode = 4
+
+[node name="booster" parent="booster_ascent/PathFollow" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 0.0479956, -0.998851, 0, 0.998844, 0.0479956, 0, -3.8147e-06, 7.62939e-06 )
+
+[editable path="orbital_stand"]
+[editable path="player/OQ_LeftController/Feature_StaticGrab"]
+[editable path="player/OQ_RightController/Feature_StaticGrab"]
+[editable path="Tower/QDArm"]
+[editable path="Tower/catch_arm"]
+[editable path="tank_farm"]

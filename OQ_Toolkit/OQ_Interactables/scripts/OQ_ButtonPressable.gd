@@ -85,16 +85,19 @@ func _process(delta):
 
 
 func _on_ButtonArea_area_entered(area):
-	touching = true
-	at_default_pos = false
-	hand_area = area
-	
-	hand_pos = hand_area.global_transform.origin
-	prev_hand_pos = hand_area.global_transform.origin
+	if area is HandArea:
+		print("entered broken btn area")
+		touching = true
+		at_default_pos = false
+		hand_area = area
+		
+		hand_pos = hand_area.global_transform.origin
+		prev_hand_pos = hand_area.global_transform.origin
 
 
 func _on_ButtonArea_area_exited(_area):
-	touching = false
+	if _area is HandArea:
+		touching = false
 
 
 func button_press(_other_area: Area):

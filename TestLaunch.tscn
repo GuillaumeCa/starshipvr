@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/starship/booster.tscn" type="PackedScene" id=1]
+[ext_resource path="res://TestLaunch.gd" type="Script" id=2]
+[ext_resource path="res://scenes/locations/starbase/tower/Tower.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/starship/starship.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Curve3D" id=1]
+bake_interval = 1.0
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 1.04154, 38.5254, 0, 0, 0, 0, 0, 0, 0, 52.5071, 391.121, 0, -71.2465, -177.588, 0, 71.2465, 177.588, 0, 203.848, 877.817, 0, -183.484, -295.067, 0, 183.484, 295.067, 0, 590.242, 1746.25, 0, -256.025, -239.905, 0, 256.025, 239.905, 0, 1102.12, 2414.79, 0, -281.568, -147.951, 0, 281.568, 147.951, 0, 1992.7, 3032.92, 0, 0, 0, 0, 0, 0, 0, 4992.02, 4374.51, 0 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="Curve3D" id=2]
+bake_interval = 1.0
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 4947.64, 4404.02, 0, 526.364, 77.4473, 0, -526.364, -77.4473, 0, 3787.85, 4348.95, 0, 480.618, 155.319, 0, -480.618, -155.319, 0, 2202.09, 3960.34, 0, 416.059, 633.888, 0, -416.059, -633.888, 0, 622.834, 2754.36, 0, 56.1939, 449.55, 0, -56.1939, -449.55, 0, -6.70868, 127.161, 0 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0 )
+}
+
+[node name="TestLaunch" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="LaunchPath" type="Path" parent="."]
+curve = SubResource( 1 )
+
+[node name="follow" type="PathFollow" parent="LaunchPath"]
+transform = Transform( 0.999968, 0.00797726, 0, -0.00797726, 0.999968, 0, 0, 0, 1, 1.04154, 38.5254, 0 )
+loop = false
+
+[node name="ReturnPath" type="Path" parent="."]
+curve = SubResource( 2 )
+
+[node name="follow" type="PathFollow" parent="ReturnPath"]
+transform = Transform( 0.991399, -0.130868, 0, 0.130868, 0.991399, 0, 0, 0, 1, 4947.64, 4404.02, 0 )
+loop = false
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 60.3147 )
+fov = 123.7
+far = 10000.0
+
+[node name="booster_base" type="Spatial" parent="."]
+transform = Transform( -4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0, 0 )
+
+[node name="booster" parent="booster_base" instance=ExtResource( 1 )]
+transform = Transform( 8.74228e-08, 4.37114e-08, 1, -1, 4.37114e-08, 8.74228e-08, -4.37114e-08, -1, 4.37114e-08, 0, 0, 0 )
+
+[node name="starship" parent="booster_base/booster" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 70.8958, 0 )
+
+[node name="Tower" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -30.3376, 0, 0 )

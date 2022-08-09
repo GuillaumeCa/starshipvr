@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/utils/SoundLooper.gd" type="Script" id=1]
+[ext_resource path="res://sound/zapsplat/motor_start.wav" type="AudioStream" id=2]
+[ext_resource path="res://sound/zapsplat/motor_mid.wav" type="AudioStream" id=3]
+[ext_resource path="res://sound/zapsplat/motor_end.wav" type="AudioStream" id=4]
+
+[node name="SoundLooper" type="AudioStreamPlayer3D"]
+unit_db = -3.83
+script = ExtResource( 1 )
+start_sound = ExtResource( 2 )
+mid_sound = ExtResource( 3 )
+end_sound = ExtResource( 4 )
+
+[connection signal="finished" from="." to="." method="_on_SoundLooper_finished"]

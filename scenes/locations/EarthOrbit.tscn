@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://textures/earthmap10k.jpg" type="Texture" id=1]
+[ext_resource path="res://scenes/starship/starship.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/locations/EarthOrbit.gd" type="Script" id=3]
+[ext_resource path="res://shaders/planet.shader" type="Shader" id=4]
+[ext_resource path="res://shaders/sun.shader" type="Shader" id=5]
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 5 )
+shader_param/Glow_Power = 1.051
+shader_param/Lightness_Difference = 1.858
+shader_param/Sun_Color = Color( 0.996078, 0.737255, 0.294118, 1 )
+shader_param/fresnel = 1.342
+
+[sub_resource type="SphereMesh" id=7]
+radius = 10.0
+height = 20.0
+radial_segments = 32
+rings = 16
+
+[sub_resource type="SphereMesh" id=1]
+radius = 60.0
+height = 120.0
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 4 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/specular = 0.5
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/texture_albedo = ExtResource( 1 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 1
+
+[node name="EarthOrbit" type="Spatial"]
+script = ExtResource( 3 )
+orbit_speed = 6.03
+
+[node name="Sun" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 359.096, 84.4341, -307.772 )
+material_override = SubResource( 6 )
+cast_shadow = 0
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="Earth" type="MeshInstance" parent="."]
+transform = Transform( 0.727102, 0, -0.686529, 0, 1, 0, 0.686529, 0, 0.727102, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 4 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( -0.731556, -0.128758, 0.669513, 0, 0.982005, 0.188855, -0.681781, 0.138158, -0.718392, 0, 86.0851, 0 )
+light_energy = 1.18
+
+[node name="pivot" type="Spatial" parent="."]
+transform = Transform( 0.574173, 0, -0.818733, 0, 1, 0, 0.818733, 0, 0.574173, 0, 0, 0 )
+
+[node name="starship" parent="pivot" instance=ExtResource( 2 )]
+transform = Transform( 0.936904, -0.198395, 0.287837, -0.31488, -0.121248, 0.941355, -0.151861, -0.972594, -0.176068, 138.148, 2.2132, -11.4826 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+visible = false
+light_color = Color( 0.189503, 0.614177, 0.855469, 1 )
+omni_range = 441.593
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 86.9648, 0, -86.9265 )
+extents = Vector3( 87, 100, 87 )
+box_projection = true
+
+[node name="ReflectionProbe2" type="ReflectionProbe" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 86.9648, 0, 87.3112 )
+extents = Vector3( 87, 100, 87 )
+
+[node name="ReflectionProbe3" type="ReflectionProbe" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -85.6445, 0, -86.9265 )
+extents = Vector3( 87, 100, 87 )
+
+[node name="ReflectionProbe4" type="ReflectionProbe" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -85.6445, 0, 87.3112 )
+extents = Vector3( 87, 100, 87 )
