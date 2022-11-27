@@ -3,7 +3,8 @@ extends Spatial
 var target = 90
 
 func _process(delta: float) -> void:
-	var rot = $support.rotation_degrees.x
+	pass
+	#var rot = $support.rotation_degrees.x
 #	if target == 0 and rot <= 0:
 #		target = 90
 #	elif target == 90 and rot >= 90:

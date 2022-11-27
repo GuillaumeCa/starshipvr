@@ -78,9 +78,7 @@ func get_cameras():
 	return $cameras/Spatial
 
 func toggle_plume(node, on: bool):
-	for flame in node.get_children():
-		if flame.has_method("toggle_emit"):
-			flame.toggle_emit(on)
+	$plume/raptor_plume.toggle_emit(on)
 
 
 func on_enter_starship():

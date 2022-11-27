@@ -18,11 +18,11 @@ albedo_texture = ExtResource( 1 )
 material = SubResource( 1 )
 
 [sub_resource type="Curve" id=3]
-_data = [ Vector2( 0.0142045, 0.469557 ), 0.0, 0.111269, 0, 0, Vector2( 0.232955, 0.888476 ), 0.030106, 0.030106, 0, 0, Vector2( 0.392045, 0.663712 ), 0.0, 0.0, 0, 0, Vector2( 0.519886, 0.816865 ), 0.075504, 0.075504, 0, 0, Vector2( 0.636364, 0.627676 ), 0.0, 0.0, 0, 0, Vector2( 0.738636, 0.758306 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.195243 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 0.890465 ), 0.0, 0.111269, 0, 0, Vector2( 0.238889, 0.678753 ), 0.030106, 0.030106, 0, 0, Vector2( 0.4, 0.764338 ), 0.0, 0.0, 0, 0, Vector2( 0.551852, 0.530104 ), 0.075504, 0.075504, 0, 0, Vector2( 0.677778, 0.674248 ), 0.0, 0.0, 0, 0, Vector2( 0.814815, 0.489564 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.178753 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="Gradient" id=4]
-offsets = PoolRealArray( 0, 0.0769231, 0.150502, 0.80602, 1 )
-colors = PoolColorArray( 0, 0, 0, 1, 0.247059, 0.843137, 0.854902, 0.541176, 0.731701, 0.174051, 0.9375, 0.764706, 0.360784, 0.133333, 0.443137, 0.576471, 0, 0, 0, 0 )
+offsets = PoolRealArray( 0, 0.115854, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.854902, 0.63171, 0.247059, 0.541176, 0, 0, 0, 0 )
 
 [node name="raptor_plume" type="Spatial"]
 script = ExtResource( 2 )
@@ -41,7 +41,7 @@ emission_colors = PoolColorArray(  )
 direction = Vector3( 0, -1, 0 )
 spread = 0.0
 initial_velocity = 30.0
-scale_amount = 8.0
+scale_amount = 6.04
 scale_amount_curve = SubResource( 3 )
 color = Color( 1, 1, 1, 0.14902 )
 color_ramp = SubResource( 4 )

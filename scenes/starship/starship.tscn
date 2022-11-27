@@ -19,8 +19,8 @@ extents = Vector3( 0.188939, 1.65407, 0.390352 )
 extents = Vector3( 0.188939, 1.51018, 0.390352 )
 
 [sub_resource type="CylinderShape" id=4]
-radius = 4.49891
 height = 0.392643
+radius = 4.49891
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -109,13 +109,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25301, 29.8831, 0.000532892
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.454215, 0, 0.812347 )
 
 [node name="raptor_plume" parent="plume" index="0" instance=ExtResource( 2 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.19135, 0 )
+particle_count = 100
+particle_lifetime = 0.3
 
-[node name="raptor_plume2" parent="plume" index="1" instance=ExtResource( 2 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0174699, 0, -1.61596 )
+[node name="Raptor1" type="Position3D" parent="plume/raptor_plume" index="1"]
 
-[node name="raptor_plume3" parent="plume" index="2" instance=ExtResource( 2 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -1.35391, 0, -0.794877 )
+[node name="Raptor2" type="Position3D" parent="plume/raptor_plume" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0106416, 0, -0.785169 )
+
+[node name="Raptor3" type="Position3D" parent="plume/raptor_plume" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.682816, 0, -0.407403 )
 
 [node name="EngineSound" type="AudioStreamPlayer3D" parent="." index="16"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.814951, 0 )

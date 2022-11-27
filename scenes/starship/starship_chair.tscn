@@ -21,7 +21,7 @@ material/0 = ExtResource( 2 )
 transform = Transform( -3.6805e-08, 0.284586, 0.934248, -9.81098e-09, 0.74553, -0.356624, -0.842, -2.11266e-08, -3.66819e-08, -0.317505, 1.24322, -0.00922461 )
 visible = false
 
-[node name="Control" type="Control" parent="chair001/UI" index="2"]
+[node name="Control" type="Control" parent="chair001/UI" index="0"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -31,9 +31,6 @@ margin_top = -102.4
 margin_right = 153.6
 margin_bottom = 102.4
 rect_min_size = Vector2( 307.2, 204.8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="chair001/UI/Control" index="0"]
 anchor_right = 1.0
